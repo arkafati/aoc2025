@@ -1,6 +1,6 @@
 use aoc::{start, end, read_input};
 
-fn largest_two_digit_in_order(s: &str) -> u64 {
+fn largest_n_digit_in_order(s: &str) -> u64 {
   let digits: Vec<u32> = s.chars()
     .filter_map(|c| c.to_digit(10))
     .collect();
@@ -27,15 +27,15 @@ fn largest_two_digit_in_order(s: &str) -> u64 {
   return max;
 }
 
-pub fn main() {
+fn main() {
   start();
 
   let input = read_input(3);
 
-  let mut sum: u64= 0;
+  let mut sum: u64 = 0;
 
   for line in input.lines() {
-    let max = largest_two_digit_in_order(line);
+    let max = largest_n_digit_in_order(line);
     sum += max;
   }
 

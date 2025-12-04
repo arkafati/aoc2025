@@ -1,22 +1,22 @@
 use aoc::{read_input, start, end};
 
-pub fn track_password (location: i32, password: &mut u32) {
+fn track_password (location: i32, password: &mut u32) {
   if location == 0 {
     *password += 1;
   }
 }
 
-pub fn handle_left_rot_overflow (location: &mut i32) {
+fn handle_left_rot_overflow (location: &mut i32) {
   let initial_loc = *location;
   *location += if initial_loc % 100 == 0 { (initial_loc / 100).abs() * 100 } else { ((initial_loc / 100).abs() + 1) * 100 };
 }
 
-pub fn handle_right_rot_overflow (location: &mut i32) {
+fn handle_right_rot_overflow (location: &mut i32) {
   let initial_loc = *location;
   *location -= if initial_loc % 100 == 0 { (initial_loc / 100).abs() * 100 } else { ((initial_loc / 100).abs()) * 100 };
 }
 
-pub fn get_rotation(instruction: &str) -> i32 {
+fn get_rotation(instruction: &str) -> i32 {
   let direction: &str = &instruction[..1];
   let magnitude: i32 = instruction[1..].trim().parse().unwrap();
 
@@ -30,7 +30,7 @@ pub fn get_rotation(instruction: &str) -> i32 {
 
 }
 
-pub fn main() -> () {  
+fn main() -> () {  
   start();
   let input: String = read_input(1);
   let mut dial_location: i32 = 50; // Dial starts at 50

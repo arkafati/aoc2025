@@ -21,7 +21,7 @@ fn largest_two_digit_in_order(s: &str) -> u32 {
   return max_val;
 }
 
-pub fn main() {
+fn main() {
   start();
 
   let input = read_input(3);
