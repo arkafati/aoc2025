@@ -1,4 +1,4 @@
-use aoc::read_input;
+use aoc::{read_input, start, end};
 
 pub fn track_password (location: i32, password: &mut u32) {
   if location == 0 {
@@ -13,7 +13,7 @@ pub fn handle_left_rot_overflow (location: &mut i32) {
 
 pub fn handle_right_rot_overflow (location: &mut i32) {
   let initial_loc = *location;
-  *location -= if initial_loc % 100 == 0 { (initial_loc / 100).abs() * 100 } else { ((initial_loc / 100).abs() - 1) * 100 };
+  *location -= if initial_loc % 100 == 0 { (initial_loc / 100).abs() * 100 } else { ((initial_loc / 100).abs()) * 100 };
 }
 
 pub fn get_rotation(instruction: &str) -> i32 {
@@ -30,7 +30,8 @@ pub fn get_rotation(instruction: &str) -> i32 {
 
 }
 
-pub fn main() -> () {
+pub fn main() -> () {  
+  start();
   let input: String = read_input(1);
   let mut dial_location: i32 = 50; // Dial starts at 50
   let mut password: u32 = 0;
@@ -51,4 +52,5 @@ pub fn main() -> () {
   }
 
   println!("{}", password);
+  end();
 }
